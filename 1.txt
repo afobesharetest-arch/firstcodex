@@ -1,0 +1,1629 @@
+давай всё же попробуем еще HEX патчинг.
+(0-5;000/000) [1C F9 04 1F 67 6C 6F 62 61 6C 00 1F 44 65 66 61 75 6C 74 53 61 76 65 4F 70 74 69 6F 6E 00 00 5A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(54/51)
+	GetINIString("global", "DefaultSaveOption", isSavedString, "chatfilter.ini")
+
+    (1-1;005/003) [1F 67 6C 6F 62 61 6C 00]
+    	SCT(8/8)
+    	"global"
+
+    (2-2;00D/00B) [1F 44 65 66 61 75 6C 74 53 61 76 65 4F 70 74 69 6F 6E 00]
+    	SCT(19/19)
+    	"DefaultSaveOption"
+
+    (3-3;020/01E) [00 5A DB 01]
+    	LVT(5/4)
+    	isSavedString
+
+    (4-4;025/022) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+    	SCT(16/16)
+    	"chatfilter.ini"
+
+    (5-5;035/032) [16]
+    	EFPT(1/1)
+    	
+(6-10;036/033) [07 97 00 7A 00 5A DB 01 1F 74 72 75 65 00 16]
+	JINT(16/15)
+	if(isSavedString == "true")
+
+    (7-10;039/036) [7A 00 5A DB 01 1F 74 72 75 65 00 16]
+    	NFT(13/12)
+    	isSavedString == "true"
+
+        (8-8;03A/037) [00 5A DB 01]
+        	LVT(5/4)
+        	isSavedString
+
+        (9-9;03F/03B) [1F 74 72 75 65 00]
+        	SCT(6/6)
+        	"true"
+
+        (10-10;045/041) [16]
+        	EFPT(1/1)
+        	
+(11-19;046/042) [07 8E 00 81 1C E9 02 1F 77 6F 72 6C 64 55 6E 69 6F 6E 5F 74 61 62 00 1F 77 6F 72 6C 64 55 6E 69 6F 6E 00 00 4A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16 16]
+	JINT(60/57)
+	if(!GetINIBool("worldUnion_tab", "worldUnion", tempVal, "chatfilter.ini"))
+
+    (12-19;049/045) [81 1C E9 02 1F 77 6F 72 6C 64 55 6E 69 6F 6E 5F 74 61 62 00 1F 77 6F 72 6C 64 55 6E 69 6F 6E 00 00 4A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16 16]
+    	NFT(57/54)
+    	!GetINIBool("worldUnion_tab", "worldUnion", tempVal, "chatfilter.ini")
+
+        (13-18;04A/046) [1C E9 02 1F 77 6F 72 6C 64 55 6E 69 6F 6E 5F 74 61 62 00 1F 77 6F 72 6C 64 55 6E 69 6F 6E 00 00 4A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+        	FFT(55/52)
+        	GetINIBool("worldUnion_tab", "worldUnion", tempVal, "chatfilter.ini")
+
+            (14-14;04F/049) [1F 77 6F 72 6C 64 55 6E 69 6F 6E 5F 74 61 62 00]
+            	SCT(16/16)
+            	"worldUnion_tab"
+
+            (15-15;05F/059) [1F 77 6F 72 6C 64 55 6E 69 6F 6E 00]
+            	SCT(12/12)
+            	"worldUnion"
+
+            (16-16;06B/065) [00 4A DB 01]
+            	LVT(5/4)
+            	tempVal
+
+            (17-17;070/069) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+            	SCT(16/16)
+            	"chatfilter.ini"
+
+            (18-18;080/079) [16]
+            	EFPT(1/1)
+            	
+        (19-19;081/07A) [16]
+        	EFPT(1/1)
+        	
+(20-21;082/07B) [1B 66 3D 16]
+	VFT(6/4)
+	SetDefaultFilterValueWorldUnion()
+
+    (21-21;087/07E) [16]
+    	EFPT(1/1)
+    	
+(22-23;088/07F) [1B 57 3D 16]
+	VFT(6/4)
+	SaveChatFilterOption()
+
+    (23-23;08D/082) [16]
+    	EFPT(1/1)
+    	
+(24-25;08E/083) [1B 50 4C 16]
+	VFT(6/4)
+	LoadINIFilterSetting()
+
+    (25-25;093/086) [16]
+    	EFPT(1/1)
+    	
+(26-26;094/087) [06 65 01]
+	JT(3/3)
+	goto J0x165
+
+(27-32;097/08A) [07 DF 00 19 1B 12 16 06 00 04 1B 25 16]
+	JINT(19/13)
+	if(getInstanceUIData().getIsClassicServer())
+
+    (28-32;09A/08D) [19 1B 12 16 06 00 04 1B 25 16]
+    	CT(16/10)
+    	getInstanceUIData().getIsClassicServer()
+
+        (29-30;09B/08E) [1B 12 16]
+        	VFT(6/3)
+        	getInstanceUIData()
+
+            (30-30;0A0/090) [16]
+            	EFPT(1/1)
+            	
+        (31-32;0A4/094) [1B 25 16]
+        	VFT(6/3)
+        	getIsClassicServer()
+
+            (32-32;0A9/096) [16]
+            	EFPT(1/1)
+            	
+(33-38;0AA/097) [1C C3 04 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 46 6F 6E 74 53 69 7A 65 53 61 76 65 64 00 26 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(50/48)
+	SetINIInt("global", "ChatFontSizeSaved", 1, "chatfilter.ini")
+
+    (34-34;0AF/09A) [1F 67 6C 6F 62 61 6C 00]
+    	SCT(8/8)
+    	"global"
+
+    (35-35;0B7/0A2) [1F 43 68 61 74 46 6F 6E 74 53 69 7A 65 53 61 76 65 64 00]
+    	SCT(19/19)
+    	"ChatFontSizeSaved"
+
+    (36-36;0CA/0B5) [26]
+    	IOT(1/1)
+    	1
+
+    (37-37;0CB/0B6) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+    	SCT(16/16)
+    	"chatfilter.ini"
+
+    (38-38;0DB/0C6) [16]
+    	EFPT(1/1)
+    	
+(39-39;0DC/0C7) [06 11 01]
+	JT(3/3)
+	goto J0x111
+
+(40-45;0DF/0CA) [1C C3 04 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 46 6F 6E 74 53 69 7A 65 53 61 76 65 64 00 25 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(50/48)
+	SetINIInt("global", "ChatFontSizeSaved", 0, "chatfilter.ini")
+
+    (41-41;0E4/0CD) [1F 67 6C 6F 62 61 6C 00]
+    	SCT(8/8)
+    	"global"
+
+    (42-42;0EC/0D5) [1F 43 68 61 74 46 6F 6E 74 53 69 7A 65 53 61 76 65 64 00]
+    	SCT(19/19)
+    	"ChatFontSizeSaved"
+
+    (43-43;0FF/0E8) [25]
+    	IZT(1/1)
+    	0
+
+    (44-44;100/0E9) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+    	SCT(16/16)
+    	"chatfilter.ini"
+
+    (45-45;110/0F9) [16]
+    	EFPT(1/1)
+    	
+(46-48;111/0FA) [0F 00 5A DB 01 1F 74 72 75 65 00]
+	LT(12/11)
+	isSavedString = "true"
+
+    (47-47;112/0FB) [00 5A DB 01]
+    	LVT(5/4)
+    	isSavedString
+
+    (48-48;117/0FF) [1F 74 72 75 65 00]
+    	SCT(6/6)
+    	"true"
+
+(49-54;11D/105) [1C F6 04 1F 67 6C 6F 62 61 6C 00 1F 44 65 66 61 75 6C 74 53 61 76 65 4F 70 74 69 6F 6E 00 00 5A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(54/51)
+	SetINIString("global", "DefaultSaveOption", isSavedString, "chatfilter.ini")
+
+    (50-50;122/108) [1F 67 6C 6F 62 61 6C 00]
+    	SCT(8/8)
+    	"global"
+
+    (51-51;12A/110) [1F 44 65 66 61 75 6C 74 53 61 76 65 4F 70 74 69 6F 6E 00]
+    	SCT(19/19)
+    	"DefaultSaveOption"
+
+    (52-52;13D/123) [00 5A DB 01]
+    	LVT(5/4)
+    	isSavedString
+
+    (53-53;142/127) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+    	SCT(16/16)
+    	"chatfilter.ini"
+
+    (54-54;152/137) [16]
+    	EFPT(1/1)
+    	
+(55-56;153/138) [1B 67 3D 16]
+	VFT(6/4)
+	SetDefaultFilterValue()
+
+    (56-56;158/13B) [16]
+    	EFPT(1/1)
+    	
+(57-58;159/13C) [1B 66 3D 16]
+	VFT(6/4)
+	SetDefaultFilterValueWorldUnion()
+
+    (58-58;15E/13F) [16]
+    	EFPT(1/1)
+    	
+(59-60;15F/140) [1B 57 3D 16]
+	VFT(6/4)
+	SaveChatFilterOption()
+
+    (60-60;164/143) [16]
+    	EFPT(1/1)
+    	
+(61-66;165/144) [07 D7 01 19 1B 12 16 06 00 04 1B 39 16]
+	JINT(19/13)
+	if(getInstanceUIData().getIsLiveServer())
+
+    (62-66;168/147) [19 1B 12 16 06 00 04 1B 39 16]
+    	CT(16/10)
+    	getInstanceUIData().getIsLiveServer()
+
+        (63-64;169/148) [1B 12 16]
+        	VFT(6/3)
+        	getInstanceUIData()
+
+            (64-64;16E/14A) [16]
+            	EFPT(1/1)
+            	
+        (65-66;172/14E) [1B 39 16]
+        	VFT(6/3)
+        	getIsLiveServer()
+
+            (66-66;177/150) [16]
+            	EFPT(1/1)
+            	
+(67-72;178/151) [1C E9 02 1F 67 6C 6F 62 61 6C 00 1F 53 79 73 74 65 6D 4D 73 67 57 6E 64 00 01 5E 2F 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(49/45)
+	GetINIBool("global", "SystemMsgWnd", m_bUseSystemMsgWnd, "chatfilter.ini")
+
+    (68-68;17D/154) [1F 67 6C 6F 62 61 6C 00]
+    	SCT(8/8)
+    	"global"
+
+    (69-69;185/15C) [1F 53 79 73 74 65 6D 4D 73 67 57 6E 64 00]
+    	SCT(14/14)
+    	"SystemMsgWnd"
+
+    (70-70;193/16A) [01 5E 2F]
+    	IVT(5/3)
+    	m_bUseSystemMsgWnd
+
+    (71-71;198/16D) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+    	SCT(16/16)
+    	"chatfilter.ini"
+
+    (72-72;1A8/17D) [16]
+    	EFPT(1/1)
+    	
+(73-75;1A9/17E) [07 C5 01 39 3E 01 5E 2F]
+	JINT(10/8)
+	if(bool(m_bUseSystemMsgWnd))
+
+    (74-75;1AC/181) [39 3E 01 5E 2F]
+    	PCT(7/5)
+    	bool(m_bUseSystemMsgWnd)
+
+        (75-75;1AE/183) [01 5E 2F]
+        	IVT(5/3)
+        	m_bUseSystemMsgWnd
+
+(76-79;1B3/186) [19 01 66 9F 01 06 00 00 1C 9A 16]
+	CT(15/11)
+	m_hSystemMsgWnd.ShowWindow()
+
+    (77-77;1B4/187) [01 66 9F 01]
+    	IVT(5/4)
+    	m_hSystemMsgWnd
+
+    (78-79;1BC/18E) [1C 9A 16]
+    	FFT(6/3)
+    	ShowWindow()
+
+        (79-79;1C1/190) [16]
+        	EFPT(1/1)
+        	
+(80-80;1C2/191) [06 D4 01]
+	JT(3/3)
+	goto J0x1D4
+
+(81-84;1C5/194) [19 01 66 9F 01 06 00 00 1C 93 16]
+	CT(15/11)
+	m_hSystemMsgWnd.HideWindow()
+
+    (82-82;1C6/195) [01 66 9F 01]
+    	IVT(5/4)
+    	m_hSystemMsgWnd
+
+    (83-84;1CE/19C) [1C 93 16]
+    	FFT(6/3)
+    	HideWindow()
+
+        (84-84;1D3/19E) [16]
+        	EFPT(1/1)
+        	
+(85-85;1D4/19F) [06 E6 01]
+	JT(3/3)
+	goto J0x1E6
+
+(86-89;1D7/1A2) [19 01 66 9F 01 06 00 00 1C 93 16]
+	CT(15/11)
+	m_hSystemMsgWnd.HideWindow()
+
+    (87-87;1D8/1A3) [01 66 9F 01]
+    	IVT(5/4)
+    	m_hSystemMsgWnd
+
+    (88-89;1E0/1AA) [1C 93 16]
+    	FFT(6/3)
+    	HideWindow()
+
+        (89-89;1E5/1AC) [16]
+        	EFPT(1/1)
+        	
+(90-95;1E6/1AD) [1B 06 00 79 BF 02 1F 76 69 73 69 62 6C 65 00 39 53 01 5E 2F 16]
+	VFT(27/21)
+	ParamAdd(isShowSystemMsgWndParam, "visible", string(m_bUseSystemMsgWnd))
+
+    (91-91;1EB/1AF) [00 79 BF 02]
+    	LVT(5/4)
+    	isShowSystemMsgWndParam
+
+    (92-92;1F0/1B3) [1F 76 69 73 69 62 6C 65 00]
+    	SCT(9/9)
+    	"visible"
+
+    (93-94;1F9/1BC) [39 53 01 5E 2F]
+    	PCT(7/5)
+    	string(m_bUseSystemMsgWnd)
+
+        (94-94;1FB/1BE) [01 5E 2F]
+        	IVT(5/3)
+        	m_bUseSystemMsgWnd
+
+    (95-95;200/1C1) [16]
+    	EFPT(1/1)
+    	
+(96-102;201/1C2) [07 69 02 1C E9 02 1F 67 6C 6F 62 61 6C 00 1F 55 73 65 57 6F 72 6C 64 43 68 61 74 53 70 65 61 6B 65 72 00 00 4A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	JINT(59/56)
+	if(GetINIBool("global", "UseWorldChatSpeaker", tempVal, "chatfilter.ini"))
+
+    (97-102;204/1C5) [1C E9 02 1F 67 6C 6F 62 61 6C 00 1F 55 73 65 57 6F 72 6C 64 43 68 61 74 53 70 65 61 6B 65 72 00 00 4A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+    	FFT(56/53)
+    	GetINIBool("global", "UseWorldChatSpeaker", tempVal, "chatfilter.ini")
+
+        (98-98;209/1C8) [1F 67 6C 6F 62 61 6C 00]
+        	SCT(8/8)
+        	"global"
+
+        (99-99;211/1D0) [1F 55 73 65 57 6F 72 6C 64 43 68 61 74 53 70 65 61 6B 65 72 00]
+        	SCT(21/21)
+        	"UseWorldChatSpeaker"
+
+        (100-100;226/1E5) [00 4A DB 01]
+        	LVT(5/4)
+        	tempVal
+
+        (101-101;22B/1E9) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+        	SCT(16/16)
+        	"chatfilter.ini"
+
+        (102-102;23B/1F9) [16]
+        	EFPT(1/1)
+        	
+(103-107;23C/1FA) [1C DE 02 1F 77 6F 72 6C 64 43 68 61 74 42 6F 78 00 1F 49 73 53 68 6F 77 53 79 73 74 65 6D 4D 73 67 57 6E 64 00 00 79 BF 02 16]
+	FFT(45/42)
+	CallGFxFunction("worldChatBox", "IsShowSystemMsgWnd", isShowSystemMsgWndParam)
+
+    (104-104;241/1FD) [1F 77 6F 72 6C 64 43 68 61 74 42 6F 78 00]
+    	SCT(14/14)
+    	"worldChatBox"
+
+    (105-105;24F/20B) [1F 49 73 53 68 6F 77 53 79 73 74 65 6D 4D 73 67 57 6E 64 00]
+    	SCT(20/20)
+    	"IsShowSystemMsgWnd"
+
+    (106-106;263/21F) [00 79 BF 02]
+    	LVT(5/4)
+    	isShowSystemMsgWndParam
+
+    (107-107;268/223) [16]
+    	EFPT(1/1)
+    	
+(108-112;269/224) [1C DE 02 1F 55 73 65 72 41 6C 65 72 74 4D 65 73 73 61 67 65 00 1F 49 73 53 68 6F 77 53 79 73 74 65 6D 4D 73 67 57 6E 64 00 00 79 BF 02 16]
+	FFT(49/46)
+	CallGFxFunction("UserAlertMessage", "IsShowSystemMsgWnd", isShowSystemMsgWndParam)
+
+    (109-109;26E/227) [1F 55 73 65 72 41 6C 65 72 74 4D 65 73 73 61 67 65 00]
+    	SCT(18/18)
+    	"UserAlertMessage"
+
+    (110-110;280/239) [1F 49 73 53 68 6F 77 53 79 73 74 65 6D 4D 73 67 57 6E 64 00]
+    	SCT(20/20)
+    	"IsShowSystemMsgWnd"
+
+    (111-111;294/24D) [00 79 BF 02]
+    	LVT(5/4)
+    	isShowSystemMsgWndParam
+
+    (112-112;299/251) [16]
+    	EFPT(1/1)
+    	
+(113-119;29A/252) [07 F7 02 1C E9 02 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 52 65 73 69 7A 69 6E 67 00 00 4A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	JINT(52/49)
+	if(GetINIBool("global", "ChatResizing", tempVal, "chatfilter.ini"))
+
+    (114-119;29D/255) [1C E9 02 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 52 65 73 69 7A 69 6E 67 00 00 4A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+    	FFT(49/46)
+    	GetINIBool("global", "ChatResizing", tempVal, "chatfilter.ini")
+
+        (115-115;2A2/258) [1F 67 6C 6F 62 61 6C 00]
+        	SCT(8/8)
+        	"global"
+
+        (116-116;2AA/260) [1F 43 68 61 74 52 65 73 69 7A 69 6E 67 00]
+        	SCT(14/14)
+        	"ChatResizing"
+
+        (117-117;2B8/26E) [00 4A DB 01]
+        	LVT(5/4)
+        	tempVal
+
+        (118-118;2BD/272) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+        	SCT(16/16)
+        	"chatfilter.ini"
+
+        (119-119;2CD/282) [16]
+        	EFPT(1/1)
+        	
+(120-122;2CE/283) [0F 01 40 46 00 4A DB 01]
+	LT(11/8)
+	m_ChatResizeOnOff = tempVal
+
+    (121-121;2CF/284) [01 40 46]
+    	IVT(5/3)
+    	m_ChatResizeOnOff
+
+    (122-122;2D4/287) [00 4A DB 01]
+    	LVT(5/4)
+    	tempVal
+
+(123-125;2D9/28B) [07 ED 02 39 3E 01 40 46]
+	JINT(10/8)
+	if(bool(m_ChatResizeOnOff))
+
+    (124-125;2DC/28E) [39 3E 01 40 46]
+    	PCT(7/5)
+    	bool(m_ChatResizeOnOff)
+
+        (125-125;2DE/290) [01 40 46]
+        	IVT(5/3)
+        	m_ChatResizeOnOff
+
+(126-128;2E3/293) [1C F6 0E 28 16]
+	FFT(7/5)
+	EnableChatWndResizing(false)
+
+    (127-127;2E8/296) [28]
+    	FT(1/1)
+    	false
+
+    (128-128;2E9/297) [16]
+    	EFPT(1/1)
+    	
+(129-129;2EA/298) [06 F4 02]
+	JT(3/3)
+	goto J0x2F4
+
+(130-132;2ED/29B) [1C F6 0E 27 16]
+	FFT(7/5)
+	EnableChatWndResizing(true)
+
+    (131-131;2F2/29E) [27]
+    	TT(1/1)
+    	true
+
+    (132-132;2F3/29F) [16]
+    	EFPT(1/1)
+    	
+(133-133;2F4/2A0) [06 FE 02]
+	JT(3/3)
+	goto J0x2FE
+
+(134-136;2F7/2A3) [1C F6 0E 27 16]
+	FFT(7/5)
+	EnableChatWndResizing(true)
+
+    (135-135;2FC/2A6) [27]
+    	TT(1/1)
+    	true
+
+    (136-136;2FD/2A7) [16]
+    	EFPT(1/1)
+    	
+(137-138;2FE/2A8) [1B 5A 3D 16]
+	VFT(6/4)
+	_SetAllcurrentAssignedChatTypeID()
+
+    (138-138;303/2AB) [16]
+    	EFPT(1/1)
+    	
+(139-144;304/2AC) [1C F3 03 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 46 6F 6E 74 53 69 7A 65 53 61 76 65 64 00 00 50 FC 03 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(54/51)
+	GetINIInt("global", "ChatFontSizeSaved", FontSize, "chatfilter.ini")
+
+    (140-140;309/2AF) [1F 67 6C 6F 62 61 6C 00]
+    	SCT(8/8)
+    	"global"
+
+    (141-141;311/2B7) [1F 43 68 61 74 46 6F 6E 74 53 69 7A 65 53 61 76 65 64 00]
+    	SCT(19/19)
+    	"ChatFontSizeSaved"
+
+    (142-142;324/2CA) [00 50 FC 03]
+    	LVT(5/4)
+    	FontSize
+
+    (143-143;329/2CE) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+    	SCT(16/16)
+    	"chatfilter.ini"
+
+    (144-144;339/2DE) [16]
+    	EFPT(1/1)
+    	
+(145-147;33A/2DF) [1B 5C 3D 00 50 FC 03 16]
+	VFT(11/8)
+	_SetChangeFont(FontSize)
+
+    (146-146;33F/2E2) [00 50 FC 03]
+    	LVT(5/4)
+    	FontSize
+
+    (147-147;344/2E6) [16]
+    	EFPT(1/1)
+    	
+(148-151;345/2E7) [1C F6 08 00 4B FC 03 00 48 FC 03 16]
+	FFT(16/12)
+	GetCurrentResolution(CurrentMaxWidth, CurrentMaxHeight)
+
+    (149-149;34A/2EA) [00 4B FC 03]
+    	LVT(5/4)
+    	CurrentMaxWidth
+
+    (150-150;34F/2EE) [00 48 FC 03]
+    	LVT(5/4)
+    	CurrentMaxHeight
+
+    (151-151;354/2F2) [16]
+    	EFPT(1/1)
+    	
+(152-160;355/2F3) [14 2D 00 47 DC 01 1C F3 03 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 53 69 7A 65 57 69 64 74 68 00 00 50 65 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	LBT(57/52)
+	isSavedChatSize = GetINIInt("global", "ChatSizeWidth", sizeW, "chatfilter.ini")
+
+    (153-154;356/2F4) [2D 00 47 DC 01]
+    	BVT(6/5)
+    	isSavedChatSize
+
+        (154-154;357/2F5) [00 47 DC 01]
+        	LVT(5/4)
+        	isSavedChatSize
+
+    (155-160;35C/2F9) [1C F3 03 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 53 69 7A 65 57 69 64 74 68 00 00 50 65 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+    	FFT(50/46)
+    	GetINIInt("global", "ChatSizeWidth", sizeW, "chatfilter.ini")
+
+        (156-156;361/2FC) [1F 67 6C 6F 62 61 6C 00]
+        	SCT(8/8)
+        	"global"
+
+        (157-157;369/304) [1F 43 68 61 74 53 69 7A 65 57 69 64 74 68 00]
+        	SCT(15/15)
+        	"ChatSizeWidth"
+
+        (158-158;378/313) [00 50 65]
+        	LVT(5/3)
+        	sizeW
+
+        (159-159;37D/316) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+        	SCT(16/16)
+        	"chatfilter.ini"
+
+        (160-160;38D/326) [16]
+        	EFPT(1/1)
+        	
+(161-174;38E/327) [14 2D 00 47 DC 01 82 1C F3 03 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 53 69 7A 65 48 65 69 67 68 74 00 00 43 77 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16 18 07 00 2D 00 47 DC 01 16]
+	LBT(69/63)
+	isSavedChatSize = GetINIInt("global", "ChatSizeHeight", sizeH, "chatfilter.ini") && isSavedChatSize
+
+    (162-163;38F/328) [2D 00 47 DC 01]
+    	BVT(6/5)
+    	isSavedChatSize
+
+        (163-163;390/329) [00 47 DC 01]
+        	LVT(5/4)
+        	isSavedChatSize
+
+    (164-174;395/32D) [82 1C F3 03 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 53 69 7A 65 48 65 69 67 68 74 00 00 43 77 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16 18 07 00 2D 00 47 DC 01 16]
+    	NFT(62/57)
+    	GetINIInt("global", "ChatSizeHeight", sizeH, "chatfilter.ini") && isSavedChatSize
+
+        (165-170;396/32E) [1C F3 03 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 53 69 7A 65 48 65 69 67 68 74 00 00 43 77 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+        	FFT(51/47)
+        	GetINIInt("global", "ChatSizeHeight", sizeH, "chatfilter.ini")
+
+            (166-166;39B/331) [1F 67 6C 6F 62 61 6C 00]
+            	SCT(8/8)
+            	"global"
+
+            (167-167;3A3/339) [1F 43 68 61 74 53 69 7A 65 48 65 69 67 68 74 00]
+            	SCT(16/16)
+            	"ChatSizeHeight"
+
+            (168-168;3B3/349) [00 43 77]
+            	LVT(5/3)
+            	sizeH
+
+            (169-169;3B8/34C) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+            	SCT(16/16)
+            	"chatfilter.ini"
+
+            (170-170;3C8/35C) [16]
+            	EFPT(1/1)
+            	
+        (171-173;3C9/35D) [18 07 00 2D 00 47 DC 01]
+        	ST(9/8)
+        	isSavedChatSize
+
+            (172-173;3CC/360) [2D 00 47 DC 01]
+            	BVT(6/5)
+            	isSavedChatSize
+
+                (173-173;3CD/361) [00 47 DC 01]
+                	LVT(5/4)
+                	isSavedChatSize
+
+        (174-174;3D2/365) [16]
+        	EFPT(1/1)
+        	
+(175-179;3D3/366) [07 ED 03 96 00 50 65 1D 8F 01 00 00 16]
+	JINT(15/13)
+	if(sizeW < 399)
+
+    (176-179;3D6/369) [96 00 50 65 1D 8F 01 00 00 16]
+    	NFT(12/10)
+    	sizeW < 399
+
+        (177-177;3D7/36A) [00 50 65]
+        	LVT(5/3)
+        	sizeW
+
+        (178-178;3DC/36D) [1D 8F 01 00 00]
+        	ICT(5/5)
+        	399
+
+        (179-179;3E1/372) [16]
+        	EFPT(1/1)
+        	
+(180-182;3E2/373) [0F 00 50 65 1D 8F 01 00 00]
+	LT(11/9)
+	sizeW = 399
+
+    (181-181;3E3/374) [00 50 65]
+    	LVT(5/3)
+    	sizeW
+
+    (182-182;3E8/377) [1D 8F 01 00 00]
+    	ICT(5/5)
+    	399
+
+(183-187;3ED/37C) [07 01 04 96 00 43 77 2C 82 16]
+	JINT(12/10)
+	if(sizeH < 130)
+
+    (184-187;3F0/37F) [96 00 43 77 2C 82 16]
+    	NFT(9/7)
+    	sizeH < 130
+
+        (185-185;3F1/380) [00 43 77]
+        	LVT(5/3)
+        	sizeH
+
+        (186-186;3F6/383) [2C 82]
+        	ICBT(2/2)
+        	130
+
+        (187-187;3F8/385) [16]
+        	EFPT(1/1)
+        	
+(188-190;3F9/386) [0F 00 43 77 2C 82]
+	LT(8/6)
+	sizeH = 130
+
+    (189-189;3FA/387) [00 43 77]
+    	LVT(5/3)
+    	sizeH
+
+    (190-190;3FF/38A) [2C 82]
+    	ICBT(2/2)
+    	130
+
+(191-210;401/38C) [07 F5 04 82 82 2D 00 47 DC 01 18 0D 00 98 00 50 65 00 4B FC 03 16 16 18 11 00 98 00 43 77 93 00 48 FC 03 2C 0F 16 16 16]
+	JINT(47/40)
+	if((isSavedChatSize && sizeW <= CurrentMaxWidth) && sizeH <= (CurrentMaxHeight - 15))
+
+    (192-210;404/38F) [82 82 2D 00 47 DC 01 18 0D 00 98 00 50 65 00 4B FC 03 16 16 18 11 00 98 00 43 77 93 00 48 FC 03 2C 0F 16 16 16]
+    	NFT(44/37)
+    	(isSavedChatSize && sizeW <= CurrentMaxWidth) && sizeH <= (CurrentMaxHeight - 15)
+
+        (193-201;405/390) [82 2D 00 47 DC 01 18 0D 00 98 00 50 65 00 4B FC 03 16 16]
+        	NFT(23/19)
+        	isSavedChatSize && sizeW <= CurrentMaxWidth
+
+            (194-195;406/391) [2D 00 47 DC 01]
+            	BVT(6/5)
+            	isSavedChatSize
+
+                (195-195;407/392) [00 47 DC 01]
+                	LVT(5/4)
+                	isSavedChatSize
+
+            (196-200;40C/396) [18 0D 00 98 00 50 65 00 4B FC 03 16]
+            	ST(15/12)
+            	sizeW <= CurrentMaxWidth
+
+                (197-200;40F/399) [98 00 50 65 00 4B FC 03 16]
+                	NFT(12/9)
+                	sizeW <= CurrentMaxWidth
+
+                    (198-198;410/39A) [00 50 65]
+                    	LVT(5/3)
+                    	sizeW
+
+                    (199-199;415/39D) [00 4B FC 03]
+                    	LVT(5/4)
+                    	CurrentMaxWidth
+
+                    (200-200;41A/3A1) [16]
+                    	EFPT(1/1)
+                    	
+            (201-201;41B/3A2) [16]
+            	EFPT(1/1)
+            	
+        (202-209;41C/3A3) [18 11 00 98 00 43 77 93 00 48 FC 03 2C 0F 16 16]
+        	ST(19/16)
+        	sizeH <= (CurrentMaxHeight - 15)
+
+            (203-209;41F/3A6) [98 00 43 77 93 00 48 FC 03 2C 0F 16 16]
+            	NFT(16/13)
+            	sizeH <= (CurrentMaxHeight - 15)
+
+                (204-204;420/3A7) [00 43 77]
+                	LVT(5/3)
+                	sizeH
+
+                (205-208;425/3AA) [93 00 48 FC 03 2C 0F 16]
+                	NFT(9/8)
+                	CurrentMaxHeight - 15
+
+                    (206-206;426/3AB) [00 48 FC 03]
+                    	LVT(5/4)
+                    	CurrentMaxHeight
+
+                    (207-207;42B/3AF) [2C 0F]
+                    	ICBT(2/2)
+                    	15
+
+                    (208-208;42D/3B1) [16]
+                    	EFPT(1/1)
+                    	
+                (209-209;42E/3B2) [16]
+                	EFPT(1/1)
+                	
+        (210-210;42F/3B3) [16]
+        	EFPT(1/1)
+        	
+(211-216;430/3B4) [19 01 6F 34 10 00 00 1C F6 01 00 50 65 00 43 77 16]
+	CT(25/17)
+	m_hChatWnd.SetWindowSize(sizeW, sizeH)
+
+    (212-212;431/3B5) [01 6F 34]
+    	IVT(5/3)
+    	m_hChatWnd
+
+    (213-216;439/3BB) [1C F6 01 00 50 65 00 43 77 16]
+    	FFT(16/10)
+    	SetWindowSize(sizeW, sizeH)
+
+        (214-214;43E/3BE) [00 50 65]
+        	LVT(5/3)
+        	sizeW
+
+        (215-215;443/3C1) [00 43 77]
+        	LVT(5/3)
+        	sizeH
+
+        (216-216;448/3C4) [16]
+        	EFPT(1/1)
+        	
+(217-225;449/3C5) [19 01 61 07 14 00 00 1C F6 01 93 00 50 65 2C 34 16 01 58 FF 03 16]
+	CT(29/22)
+	ChatEditBox.SetWindowSize(sizeW - 52, m_EditBoxHeight)
+
+    (218-218;44A/3C6) [01 61 07]
+    	IVT(5/3)
+    	ChatEditBox
+
+    (219-225;452/3CC) [1C F6 01 93 00 50 65 2C 34 16 01 58 FF 03 16]
+    	FFT(20/15)
+    	SetWindowSize(sizeW - 52, m_EditBoxHeight)
+
+        (220-223;457/3CF) [93 00 50 65 2C 34 16]
+        	NFT(9/7)
+        	sizeW - 52
+
+            (221-221;458/3D0) [00 50 65]
+            	LVT(5/3)
+            	sizeW
+
+            (222-222;45D/3D3) [2C 34]
+            	ICBT(2/2)
+            	52
+
+            (223-223;45F/3D5) [16]
+            	EFPT(1/1)
+            	
+        (224-224;460/3D6) [01 58 FF 03]
+        	IVT(5/4)
+        	m_EditBoxHeight
+
+        (225-225;465/3DA) [16]
+        	EFPT(1/1)
+        	
+(226-231;466/3DB) [1B 06 00 5F 4E 1F 77 00 39 53 00 50 65 16]
+	VFT(21/14)
+	ParamAdd(sizeParam, "w", string(sizeW))
+
+    (227-227;46B/3DD) [00 5F 4E]
+    	LVT(5/3)
+    	sizeParam
+
+    (228-228;470/3E0) [1F 77 00]
+    	SCT(3/3)
+    	"w"
+
+    (229-230;473/3E3) [39 53 00 50 65]
+    	PCT(7/5)
+    	string(sizeW)
+
+        (230-230;475/3E5) [00 50 65]
+        	LVT(5/3)
+        	sizeW
+
+    (231-231;47A/3E8) [16]
+    	EFPT(1/1)
+    	
+(232-240;47B/3E9) [1B 06 00 5F 4E 1F 68 00 39 53 92 00 43 77 2C 23 16 16]
+	VFT(25/18)
+	ParamAdd(sizeParam, "h", string(sizeH + 35))
+
+    (233-233;480/3EB) [00 5F 4E]
+    	LVT(5/3)
+    	sizeParam
+
+    (234-234;485/3EE) [1F 68 00]
+    	SCT(3/3)
+    	"h"
+
+    (235-239;488/3F1) [39 53 92 00 43 77 2C 23 16]
+    	PCT(11/9)
+    	string(sizeH + 35)
+
+        (236-239;48A/3F3) [92 00 43 77 2C 23 16]
+        	NFT(9/7)
+        	sizeH + 35
+
+            (237-237;48B/3F4) [00 43 77]
+            	LVT(5/3)
+            	sizeH
+
+            (238-238;490/3F7) [2C 23]
+            	ICBT(2/2)
+            	35
+
+            (239-239;492/3F9) [16]
+            	EFPT(1/1)
+            	
+    (240-240;493/3FA) [16]
+    	EFPT(1/1)
+    	
+(241-245;494/3FB) [1C DE 02 1F 55 73 65 72 41 6C 65 72 74 4D 65 73 73 61 67 65 00 1F 52 65 63 65 69 76 65 43 68 61 74 57 6E 64 53 69 7A 65 00 00 5F 4E 16]
+	FFT(49/45)
+	CallGFxFunction("UserAlertMessage", "ReceiveChatWndSize", sizeParam)
+
+    (242-242;499/3FE) [1F 55 73 65 72 41 6C 65 72 74 4D 65 73 73 61 67 65 00]
+    	SCT(18/18)
+    	"UserAlertMessage"
+
+    (243-243;4AB/410) [1F 52 65 63 65 69 76 65 43 68 61 74 57 6E 64 53 69 7A 65 00]
+    	SCT(20/20)
+    	"ReceiveChatWndSize"
+
+    (244-244;4BF/424) [00 5F 4E]
+    	LVT(5/3)
+    	sizeParam
+
+    (245-245;4C4/427) [16]
+    	EFPT(1/1)
+    	
+(246-250;4C5/428) [1C DE 02 1F 77 6F 72 6C 64 43 68 61 74 42 6F 78 00 1F 52 65 63 65 69 76 65 43 68 61 74 57 6E 64 53 69 7A 65 00 00 5F 4E 16]
+	FFT(45/41)
+	CallGFxFunction("worldChatBox", "ReceiveChatWndSize", sizeParam)
+
+    (247-247;4CA/42B) [1F 77 6F 72 6C 64 43 68 61 74 42 6F 78 00]
+    	SCT(14/14)
+    	"worldChatBox"
+
+    (248-248;4D8/439) [1F 52 65 63 65 69 76 65 43 68 61 74 57 6E 64 53 69 7A 65 00]
+    	SCT(20/20)
+    	"ReceiveChatWndSize"
+
+    (249-249;4EC/44D) [00 5F 4E]
+    	LVT(5/3)
+    	sizeParam
+
+    (250-250;4F1/450) [16]
+    	EFPT(1/1)
+    	
+(251-251;4F2/451) [06 0C 06]
+	JT(3/3)
+	goto J0x60C
+
+(252-257;4F5/454) [19 01 6F 34 0D 00 00 1C F6 01 1D 8F 01 00 00 2C 82 16]
+	CT(22/18)
+	m_hChatWnd.SetWindowSize(399, 130)
+
+    (253-253;4F6/455) [01 6F 34]
+    	IVT(5/3)
+    	m_hChatWnd
+
+    (254-257;4FE/45B) [1C F6 01 1D 8F 01 00 00 2C 82 16]
+    	FFT(13/11)
+    	SetWindowSize(399, 130)
+
+        (255-255;503/45E) [1D 8F 01 00 00]
+        	ICT(5/5)
+        	399
+
+        (256-256;508/463) [2C 82]
+        	ICBT(2/2)
+        	130
+
+        (257-257;50A/465) [16]
+        	EFPT(1/1)
+        	
+(258-263;50B/466) [19 01 6F 34 0D 00 00 1C FF 13 1D 8F 01 00 00 2C 82 16]
+	CT(22/18)
+	m_hChatWnd.SetResizeFrameOffset(399, 130)
+
+    (259-259;50C/467) [01 6F 34]
+    	IVT(5/3)
+    	m_hChatWnd
+
+    (260-263;514/46D) [1C FF 13 1D 8F 01 00 00 2C 82 16]
+    	FFT(13/11)
+    	SetResizeFrameOffset(399, 130)
+
+        (261-261;519/470) [1D 8F 01 00 00]
+        	ICT(5/5)
+        	399
+
+        (262-262;51E/475) [2C 82]
+        	ICBT(2/2)
+        	130
+
+        (263-263;520/477) [16]
+        	EFPT(1/1)
+        	
+(264-269;521/478) [1C C3 04 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 53 69 7A 65 57 69 64 74 68 00 1D 8F 01 00 00 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(50/48)
+	SetINIInt("global", "ChatSizeWidth", 399, "chatfilter.ini")
+
+    (265-265;526/47B) [1F 67 6C 6F 62 61 6C 00]
+    	SCT(8/8)
+    	"global"
+
+    (266-266;52E/483) [1F 43 68 61 74 53 69 7A 65 57 69 64 74 68 00]
+    	SCT(15/15)
+    	"ChatSizeWidth"
+
+    (267-267;53D/492) [1D 8F 01 00 00]
+    	ICT(5/5)
+    	399
+
+    (268-268;542/497) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+    	SCT(16/16)
+    	"chatfilter.ini"
+
+    (269-269;552/4A7) [16]
+    	EFPT(1/1)
+    	
+(270-275;553/4A8) [1C C3 04 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 53 69 7A 65 48 65 69 67 68 74 00 2C 82 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(48/46)
+	SetINIInt("global", "ChatSizeHeight", 130, "chatfilter.ini")
+
+    (271-271;558/4AB) [1F 67 6C 6F 62 61 6C 00]
+    	SCT(8/8)
+    	"global"
+
+    (272-272;560/4B3) [1F 43 68 61 74 53 69 7A 65 48 65 69 67 68 74 00]
+    	SCT(16/16)
+    	"ChatSizeHeight"
+
+    (273-273;570/4C3) [2C 82]
+    	ICBT(2/2)
+    	130
+
+    (274-274;572/4C5) [1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00]
+    	SCT(16/16)
+    	"chatfilter.ini"
+
+    (275-275;582/4D5) [16]
+    	EFPT(1/1)
+    	
+(276-281;583/4D6) [1B 06 00 5F 4E 1F 77 00 39 53 1D 8F 01 00 00 16]
+	VFT(21/16)
+	ParamAdd(sizeParam, "w", string(399))
+
+    (277-277;588/4D8) [00 5F 4E]
+    	LVT(5/3)
+    	sizeParam
+
+    (278-278;58D/4DB) [1F 77 00]
+    	SCT(3/3)
+    	"w"
+
+    (279-280;590/4DE) [39 53 1D 8F 01 00 00]
+    	PCT(7/7)
+    	string(399)
+
+        (280-280;592/4E0) [1D 8F 01 00 00]
+        	ICT(5/5)
+        	399
+
+    (281-281;597/4E5) [16]
+    	EFPT(1/1)
+    	
+(282-290;598/4E6) [1B 06 00 5F 4E 1F 68 00 39 53 92 2C 82 2C 23 16 16]
+	VFT(22/17)
+	ParamAdd(sizeParam, "h", string(130 + 35))
+
+    (283-283;59D/4E8) [00 5F 4E]
+    	LVT(5/3)
+    	sizeParam
+
+    (284-284;5A2/4EB) [1F 68 00]
+    	SCT(3/3)
+    	"h"
+
+    (285-289;5A5/4EE) [39 53 92 2C 82 2C 23 16]
+    	PCT(8/8)
+    	string(130 + 35)
+
+        (286-289;5A7/4F0) [92 2C 82 2C 23 16]
+        	NFT(6/6)
+        	130 + 35
+
+            (287-287;5A8/4F1) [2C 82]
+            	ICBT(2/2)
+            	130
+
+            (288-288;5AA/4F3) [2C 23]
+            	ICBT(2/2)
+            	35
+
+            (289-289;5AC/4F5) [16]
+            	EFPT(1/1)
+            	
+    (290-290;5AD/4F6) [16]
+    	EFPT(1/1)
+    	
+(291-295;5AE/4F7) [1C DE 02 1F 55 73 65 72 41 6C 65 72 74 4D 65 73 73 61 67 65 00 1F 52 65 63 65 69 76 65 43 68 61 74 57 6E 64 53 69 7A 65 00 00 5F 4E 16]
+	FFT(49/45)
+	CallGFxFunction("UserAlertMessage", "ReceiveChatWndSize", sizeParam)
+
+    (292-292;5B3/4FA) [1F 55 73 65 72 41 6C 65 72 74 4D 65 73 73 61 67 65 00]
+    	SCT(18/18)
+    	"UserAlertMessage"
+
+    (293-293;5C5/50C) [1F 52 65 63 65 69 76 65 43 68 61 74 57 6E 64 53 69 7A 65 00]
+    	SCT(20/20)
+    	"ReceiveChatWndSize"
+
+    (294-294;5D9/520) [00 5F 4E]
+    	LVT(5/3)
+    	sizeParam
+
+    (295-295;5DE/523) [16]
+    	EFPT(1/1)
+    	
+(296-300;5DF/524) [1C DE 02 1F 77 6F 72 6C 64 43 68 61 74 42 6F 78 00 1F 52 65 63 65 69 76 65 43 68 61 74 57 6E 64 53 69 7A 65 00 00 5F 4E 16]
+	FFT(45/41)
+	CallGFxFunction("worldChatBox", "ReceiveChatWndSize", sizeParam)
+
+    (297-297;5E4/527) [1F 77 6F 72 6C 64 43 68 61 74 42 6F 78 00]
+    	SCT(14/14)
+    	"worldChatBox"
+
+    (298-298;5F2/535) [1F 52 65 63 65 69 76 65 43 68 61 74 57 6E 64 53 69 7A 65 00]
+    	SCT(20/20)
+    	"ReceiveChatWndSize"
+
+    (299-299;606/549) [00 5F 4E]
+    	LVT(5/3)
+    	sizeParam
+
+    (300-300;60B/54C) [16]
+    	EFPT(1/1)
+    	
+(301-306;60C/54D) [19 01 6F 34 0D 00 00 1C FF 13 1D 8F 01 00 00 2C 82 16]
+	CT(22/18)
+	m_hChatWnd.SetResizeFrameOffset(399, 130)
+
+    (302-302;60D/54E) [01 6F 34]
+    	IVT(5/3)
+    	m_hChatWnd
+
+    (303-306;615/554) [1C FF 13 1D 8F 01 00 00 2C 82 16]
+    	FFT(13/11)
+    	SetResizeFrameOffset(399, 130)
+
+        (304-304;61A/557) [1D 8F 01 00 00]
+        	ICT(5/5)
+        	399
+
+        (305-305;61F/55C) [2C 82]
+        	ICBT(2/2)
+        	130
+
+        (306-306;621/55E) [16]
+        	EFPT(1/1)
+        	
+(307-308;622/55F) [1B 75 0C 16]
+	VFT(6/4)
+	setInit()
+
+    (308-308;627/562) [16]
+    	EFPT(1/1)
+    	
+(309-310;628/563) [1B 60 1C 16]
+	VFT(6/4)
+	HandleOptionHasAppled()
+
+    (310-310;62D/566) [16]
+    	EFPT(1/1)
+    	
+(311-312;62E/567) [1B 6F 3D 16]
+	VFT(6/4)
+	InitScrollBarPosition()
+
+    (312-312;633/56A) [16]
+    	EFPT(1/1)
+    	
+(313-314;634/56B) [04 0B]
+	RT(2/2)
+	return
+
+    (314-314;635/56C) [0B]
+    	NT(1/1)
+    	
+
+и вот такое еще есть
+(000/000) [1C F9 04 1F 67 6C 6F 62 61 6C 00 1F 44 65 66 61 75 6C 74 53 61 76 65 4F 70 74 69 6F 6E 00 00 5A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(54/51) -> SCT(8/8) -> SCT(19/19) -> LVT(5/4) -> SCT(16/16)
+	GetINIString("global", "DefaultSaveOption", isSavedString, "chatfilter.ini")
+
+(036/033) [07 97 00 7A 00 5A DB 01 1F 74 72 75 65 00 16]
+	JINT(16/15) -> NFT(13/12) -> LVT(5/4) -> SCT(6/6)
+	if(isSavedString == "true")
+
+(046/042) [07 8E 00 81 1C E9 02 1F 77 6F 72 6C 64 55 6E 69 6F 6E 5F 74 61 62 00 1F 77 6F 72 6C 64 55 6E 69 6F 6E 00 00 4A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16 16]
+	JINT(60/57) -> NFT(57/54) -> FFT(55/52) -> SCT(16/16) -> SCT(12/12) -> LVT(5/4) -> SCT(16/16) -> EFPT(1/1)
+	if(!GetINIBool("worldUnion_tab", "worldUnion", tempVal, "chatfilter.ini"))
+
+(082/07B) [1B 66 3D 16]
+	VFT(6/4)
+	SetDefaultFilterValueWorldUnion()
+
+(088/07F) [1B 57 3D 16]
+	VFT(6/4)
+	SaveChatFilterOption()
+
+(08E/083) [1B 50 4C 16]
+	VFT(6/4)
+	LoadINIFilterSetting()
+
+(094/087) [06 65 01]
+	JT(3/3)
+	goto J0x165
+
+(097/08A) [07 DF 00 19 1B 12 16 06 00 04 1B 25 16]
+	JINT(19/13) -> CT(16/10) -> VFT(6/3) -> EFPT(1/1) -> VFT(6/3)
+	if(getInstanceUIData().getIsClassicServer())
+
+(0AA/097) [1C C3 04 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 46 6F 6E 74 53 69 7A 65 53 61 76 65 64 00 26 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(50/48) -> SCT(8/8) -> SCT(19/19) -> IOT(1/1) -> SCT(16/16)
+	SetINIInt("global", "ChatFontSizeSaved", 1, "chatfilter.ini")
+
+(0DC/0C7) [06 11 01]
+	JT(3/3)
+	goto J0x111
+
+(0DF/0CA) [1C C3 04 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 46 6F 6E 74 53 69 7A 65 53 61 76 65 64 00 25 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(50/48) -> SCT(8/8) -> SCT(19/19) -> IZT(1/1) -> SCT(16/16)
+	SetINIInt("global", "ChatFontSizeSaved", 0, "chatfilter.ini")
+
+(111/0FA) [0F 00 5A DB 01 1F 74 72 75 65 00]
+	LT(12/11) -> LVT(5/4)
+	isSavedString = "true"
+
+(11D/105) [1C F6 04 1F 67 6C 6F 62 61 6C 00 1F 44 65 66 61 75 6C 74 53 61 76 65 4F 70 74 69 6F 6E 00 00 5A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(54/51) -> SCT(8/8) -> SCT(19/19) -> LVT(5/4) -> SCT(16/16)
+	SetINIString("global", "DefaultSaveOption", isSavedString, "chatfilter.ini")
+
+(153/138) [1B 67 3D 16]
+	VFT(6/4)
+	SetDefaultFilterValue()
+
+(159/13C) [1B 66 3D 16]
+	VFT(6/4)
+	SetDefaultFilterValueWorldUnion()
+
+(15F/140) [1B 57 3D 16]
+	VFT(6/4)
+	SaveChatFilterOption()
+
+(165/144) [07 D7 01 19 1B 12 16 06 00 04 1B 39 16]
+	JINT(19/13) -> CT(16/10) -> VFT(6/3) -> EFPT(1/1) -> VFT(6/3)
+	if(getInstanceUIData().getIsLiveServer())
+
+(178/151) [1C E9 02 1F 67 6C 6F 62 61 6C 00 1F 53 79 73 74 65 6D 4D 73 67 57 6E 64 00 01 5E 2F 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(49/45) -> SCT(8/8) -> SCT(14/14) -> IVT(5/3) -> SCT(16/16)
+	GetINIBool("global", "SystemMsgWnd", m_bUseSystemMsgWnd, "chatfilter.ini")
+
+(1A9/17E) [07 C5 01 39 3E 01 5E 2F]
+	JINT(10/8) -> PCT(7/5)
+	if(bool(m_bUseSystemMsgWnd))
+
+(1B3/186) [19 01 66 9F 01 06 00 00 1C 9A 16]
+	CT(15/11) -> IVT(5/4) -> FFT(6/3)
+	m_hSystemMsgWnd.ShowWindow()
+
+(1C2/191) [06 D4 01]
+	JT(3/3)
+	goto J0x1D4
+
+(1C5/194) [19 01 66 9F 01 06 00 00 1C 93 16]
+	CT(15/11) -> IVT(5/4) -> FFT(6/3)
+	m_hSystemMsgWnd.HideWindow()
+
+(1D4/19F) [06 E6 01]
+	JT(3/3)
+	goto J0x1E6
+
+(1D7/1A2) [19 01 66 9F 01 06 00 00 1C 93 16]
+	CT(15/11) -> IVT(5/4) -> FFT(6/3)
+	m_hSystemMsgWnd.HideWindow()
+
+(1E6/1AD) [1B 06 00 79 BF 02 1F 76 69 73 69 62 6C 65 00 39 53 01 5E 2F 16]
+	VFT(27/21) -> LVT(5/4) -> SCT(9/9) -> PCT(7/5) -> IVT(5/3)
+	ParamAdd(isShowSystemMsgWndParam, "visible", string(m_bUseSystemMsgWnd))
+
+(201/1C2) [07 69 02 1C E9 02 1F 67 6C 6F 62 61 6C 00 1F 55 73 65 57 6F 72 6C 64 43 68 61 74 53 70 65 61 6B 65 72 00 00 4A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	JINT(59/56) -> FFT(56/53) -> SCT(8/8) -> SCT(21/21) -> LVT(5/4) -> SCT(16/16)
+	if(GetINIBool("global", "UseWorldChatSpeaker", tempVal, "chatfilter.ini"))
+
+(23C/1FA) [1C DE 02 1F 77 6F 72 6C 64 43 68 61 74 42 6F 78 00 1F 49 73 53 68 6F 77 53 79 73 74 65 6D 4D 73 67 57 6E 64 00 00 79 BF 02 16]
+	FFT(45/42) -> SCT(14/14) -> SCT(20/20) -> LVT(5/4)
+	CallGFxFunction("worldChatBox", "IsShowSystemMsgWnd", isShowSystemMsgWndParam)
+
+(269/224) [1C DE 02 1F 55 73 65 72 41 6C 65 72 74 4D 65 73 73 61 67 65 00 1F 49 73 53 68 6F 77 53 79 73 74 65 6D 4D 73 67 57 6E 64 00 00 79 BF 02 16]
+	FFT(49/46) -> SCT(18/18) -> SCT(20/20) -> LVT(5/4)
+	CallGFxFunction("UserAlertMessage", "IsShowSystemMsgWnd", isShowSystemMsgWndParam)
+
+(29A/252) [07 F7 02 1C E9 02 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 52 65 73 69 7A 69 6E 67 00 00 4A DB 01 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	JINT(52/49) -> FFT(49/46) -> SCT(8/8) -> SCT(14/14) -> LVT(5/4) -> SCT(16/16)
+	if(GetINIBool("global", "ChatResizing", tempVal, "chatfilter.ini"))
+
+(2CE/283) [0F 01 40 46 00 4A DB 01]
+	LT(11/8) -> IVT(5/3)
+	m_ChatResizeOnOff = tempVal
+
+(2D9/28B) [07 ED 02 39 3E 01 40 46]
+	JINT(10/8) -> PCT(7/5)
+	if(bool(m_ChatResizeOnOff))
+
+(2E3/293) [1C F6 0E 28 16]
+	FFT(7/5) -> FT(1/1)
+	EnableChatWndResizing(false)
+
+(2EA/298) [06 F4 02]
+	JT(3/3)
+	goto J0x2F4
+
+(2ED/29B) [1C F6 0E 27 16]
+	FFT(7/5) -> TT(1/1)
+	EnableChatWndResizing(true)
+
+(2F4/2A0) [06 FE 02]
+	JT(3/3)
+	goto J0x2FE
+
+(2F7/2A3) [1C F6 0E 27 16]
+	FFT(7/5) -> TT(1/1)
+	EnableChatWndResizing(true)
+
+(2FE/2A8) [1B 5A 3D 16]
+	VFT(6/4)
+	_SetAllcurrentAssignedChatTypeID()
+
+(304/2AC) [1C F3 03 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 46 6F 6E 74 53 69 7A 65 53 61 76 65 64 00 00 50 FC 03 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(54/51) -> SCT(8/8) -> SCT(19/19) -> LVT(5/4) -> SCT(16/16)
+	GetINIInt("global", "ChatFontSizeSaved", FontSize, "chatfilter.ini")
+
+(33A/2DF) [1B 5C 3D 00 50 FC 03 16]
+	VFT(11/8) -> LVT(5/4)
+	_SetChangeFont(FontSize)
+
+(345/2E7) [1C F6 08 00 4B FC 03 00 48 FC 03 16]
+	FFT(16/12) -> LVT(5/4) -> LVT(5/4)
+	GetCurrentResolution(CurrentMaxWidth, CurrentMaxHeight)
+
+(355/2F3) [14 2D 00 47 DC 01 1C F3 03 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 53 69 7A 65 57 69 64 74 68 00 00 50 65 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	LBT(57/52) -> BVT(6/5) -> LVT(5/4) -> FFT(50/46) -> SCT(8/8) -> SCT(15/15) -> LVT(5/3) -> SCT(16/16)
+	isSavedChatSize = GetINIInt("global", "ChatSizeWidth", sizeW, "chatfilter.ini")
+
+(38E/327) [14 2D 00 47 DC 01 82 1C F3 03 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 53 69 7A 65 48 65 69 67 68 74 00 00 43 77 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16 18 07 00 2D 00 47 DC 01 16]
+	LBT(69/63) -> BVT(6/5) -> LVT(5/4) -> NFT(62/57) -> FFT(51/47) -> SCT(8/8) -> SCT(16/16) -> LVT(5/3) -> SCT(16/16) -> EFPT(1/1) -> ST(9/8) -> BVT(6/5) -> LVT(5/4)
+	isSavedChatSize = GetINIInt("global", "ChatSizeHeight", sizeH, "chatfilter.ini") && isSavedChatSize
+
+(3D3/366) [07 ED 03 96 00 50 65 1D 8F 01 00 00 16]
+	JINT(15/13) -> NFT(12/10) -> LVT(5/3) -> ICT(5/5)
+	if(sizeW < 399)
+
+(3E2/373) [0F 00 50 65 1D 8F 01 00 00]
+	LT(11/9) -> LVT(5/3)
+	sizeW = 399
+
+(3ED/37C) [07 01 04 96 00 43 77 2C 82 16]
+	JINT(12/10) -> NFT(9/7) -> LVT(5/3) -> ICBT(2/2)
+	if(sizeH < 130)
+
+(3F9/386) [0F 00 43 77 2C 82]
+	LT(8/6) -> LVT(5/3)
+	sizeH = 130
+
+(401/38C) [07 F5 04 82 82 2D 00 47 DC 01 18 0D 00 98 00 50 65 00 4B FC 03 16 16 18 11 00 98 00 43 77 93 00 48 FC 03 2C 0F 16 16 16]
+	JINT(47/40) -> NFT(44/37) -> NFT(23/19) -> BVT(6/5) -> LVT(5/4) -> ST(15/12) -> NFT(12/9) -> LVT(5/3) -> LVT(5/4) -> EFPT(1/1) -> EFPT(1/1) -> ST(19/16) -> NFT(16/13) -> LVT(5/3) -> NFT(9/8) -> LVT(5/4) -> ICBT(2/2) -> EFPT(1/1) -> EFPT(1/1)
+	if((isSavedChatSize && sizeW <= CurrentMaxWidth) && sizeH <= (CurrentMaxHeight - 15))
+
+(430/3B4) [19 01 6F 34 10 00 00 1C F6 01 00 50 65 00 43 77 16]
+	CT(25/17) -> IVT(5/3) -> FFT(16/10) -> LVT(5/3) -> LVT(5/3)
+	m_hChatWnd.SetWindowSize(sizeW, sizeH)
+
+(449/3C5) [19 01 61 07 14 00 00 1C F6 01 93 00 50 65 2C 34 16 01 58 FF 03 16]
+	CT(29/22) -> IVT(5/3) -> FFT(20/15) -> NFT(9/7) -> LVT(5/3) -> ICBT(2/2) -> EFPT(1/1) -> IVT(5/4)
+	ChatEditBox.SetWindowSize(sizeW - 52, m_EditBoxHeight)
+
+(466/3DB) [1B 06 00 5F 4E 1F 77 00 39 53 00 50 65 16]
+	VFT(21/14) -> LVT(5/3) -> SCT(3/3) -> PCT(7/5) -> LVT(5/3)
+	ParamAdd(sizeParam, "w", string(sizeW))
+
+(47B/3E9) [1B 06 00 5F 4E 1F 68 00 39 53 92 00 43 77 2C 23 16 16]
+	VFT(25/18) -> LVT(5/3) -> SCT(3/3) -> PCT(11/9) -> NFT(9/7) -> LVT(5/3) -> ICBT(2/2) -> EFPT(1/1)
+	ParamAdd(sizeParam, "h", string(sizeH + 35))
+
+(494/3FB) [1C DE 02 1F 55 73 65 72 41 6C 65 72 74 4D 65 73 73 61 67 65 00 1F 52 65 63 65 69 76 65 43 68 61 74 57 6E 64 53 69 7A 65 00 00 5F 4E 16]
+	FFT(49/45) -> SCT(18/18) -> SCT(20/20) -> LVT(5/3)
+	CallGFxFunction("UserAlertMessage", "ReceiveChatWndSize", sizeParam)
+
+(4C5/428) [1C DE 02 1F 77 6F 72 6C 64 43 68 61 74 42 6F 78 00 1F 52 65 63 65 69 76 65 43 68 61 74 57 6E 64 53 69 7A 65 00 00 5F 4E 16]
+	FFT(45/41) -> SCT(14/14) -> SCT(20/20) -> LVT(5/3)
+	CallGFxFunction("worldChatBox", "ReceiveChatWndSize", sizeParam)
+
+(4F2/451) [06 0C 06]
+	JT(3/3)
+	goto J0x60C
+
+(4F5/454) [19 01 6F 34 0D 00 00 1C F6 01 1D 8F 01 00 00 2C 82 16]
+	CT(22/18) -> IVT(5/3) -> FFT(13/11) -> ICT(5/5) -> ICBT(2/2)
+	m_hChatWnd.SetWindowSize(399, 130)
+
+(50B/466) [19 01 6F 34 0D 00 00 1C FF 13 1D 8F 01 00 00 2C 82 16]
+	CT(22/18) -> IVT(5/3) -> FFT(13/11) -> ICT(5/5) -> ICBT(2/2)
+	m_hChatWnd.SetResizeFrameOffset(399, 130)
+
+(521/478) [1C C3 04 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 53 69 7A 65 57 69 64 74 68 00 1D 8F 01 00 00 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(50/48) -> SCT(8/8) -> SCT(15/15) -> ICT(5/5) -> SCT(16/16)
+	SetINIInt("global", "ChatSizeWidth", 399, "chatfilter.ini")
+
+(553/4A8) [1C C3 04 1F 67 6C 6F 62 61 6C 00 1F 43 68 61 74 53 69 7A 65 48 65 69 67 68 74 00 2C 82 1F 63 68 61 74 66 69 6C 74 65 72 2E 69 6E 69 00 16]
+	FFT(48/46) -> SCT(8/8) -> SCT(16/16) -> ICBT(2/2) -> SCT(16/16)
+	SetINIInt("global", "ChatSizeHeight", 130, "chatfilter.ini")
+
+(583/4D6) [1B 06 00 5F 4E 1F 77 00 39 53 1D 8F 01 00 00 16]
+	VFT(21/16) -> LVT(5/3) -> SCT(3/3) -> PCT(7/7) -> ICT(5/5)
+	ParamAdd(sizeParam, "w", string(399))
+
+(598/4E6) [1B 06 00 5F 4E 1F 68 00 39 53 92 2C 82 2C 23 16 16]
+	VFT(22/17) -> LVT(5/3) -> SCT(3/3) -> PCT(8/8) -> NFT(6/6) -> ICBT(2/2) -> ICBT(2/2) -> EFPT(1/1)
+	ParamAdd(sizeParam, "h", string(130 + 35))
+
+(5AE/4F7) [1C DE 02 1F 55 73 65 72 41 6C 65 72 74 4D 65 73 73 61 67 65 00 1F 52 65 63 65 69 76 65 43 68 61 74 57 6E 64 53 69 7A 65 00 00 5F 4E 16]
+	FFT(49/45) -> SCT(18/18) -> SCT(20/20) -> LVT(5/3)
+	CallGFxFunction("UserAlertMessage", "ReceiveChatWndSize", sizeParam)
+
+(5DF/524) [1C DE 02 1F 77 6F 72 6C 64 43 68 61 74 42 6F 78 00 1F 52 65 63 65 69 76 65 43 68 61 74 57 6E 64 53 69 7A 65 00 00 5F 4E 16]
+	FFT(45/41) -> SCT(14/14) -> SCT(20/20) -> LVT(5/3)
+	CallGFxFunction("worldChatBox", "ReceiveChatWndSize", sizeParam)
+
+(60C/54D) [19 01 6F 34 0D 00 00 1C FF 13 1D 8F 01 00 00 2C 82 16]
+	CT(22/18) -> IVT(5/3) -> FFT(13/11) -> ICT(5/5) -> ICBT(2/2)
+	m_hChatWnd.SetResizeFrameOffset(399, 130)
+
+(622/55F) [1B 75 0C 16]
+	VFT(6/4)
+	setInit()
+
+(628/563) [1B 60 1C 16]
+	VFT(6/4)
+	HandleOptionHasAppled()
+
+(62E/567) [1B 6F 3D 16]
+	VFT(6/4)
+	InitScrollBarPosition()
+
+(634/56B) [04 0B]
+	RT(2/2)
+	return
+и вот такое еще есть
+
+event OnShow()
+{
+    local int FontSize, sizeW, sizeH, tempVal;
+    local string isSavedString, sizeParam, isShowSystemMsgWndParam;
+    local int CurrentMaxWidth, CurrentMaxHeight;
+    local bool isSavedChatSize;
+
+    GetINIString("global", "DefaultSaveOption", isSavedString, "chatfilter.ini");
+    // End:0x97
+    if(isSavedString == "true")
+    {
+        // End:0x8E
+        if(!GetINIBool("worldUnion_tab", "worldUnion", tempVal, "chatfilter.ini"))
+        {
+            SetDefaultFilterValueWorldUnion();
+            SaveChatFilterOption();
+        }
+        LoadINIFilterSetting();        
+    }
+    else
+    {
+        // End:0xDF
+        if(getInstanceUIData().getIsClassicServer())
+        {
+            SetINIInt("global", "ChatFontSizeSaved", 1, "chatfilter.ini");            
+        }
+        else
+        {
+            SetINIInt("global", "ChatFontSizeSaved", 0, "chatfilter.ini");
+        }
+        isSavedString = "true";
+        SetINIString("global", "DefaultSaveOption", isSavedString, "chatfilter.ini");
+        SetDefaultFilterValue();
+        SetDefaultFilterValueWorldUnion();
+        SaveChatFilterOption();
+    }
+    // End:0x1D7
+    if(getInstanceUIData().getIsLiveServer())
+    {
+        GetINIBool("global", "SystemMsgWnd", m_bUseSystemMsgWnd, "chatfilter.ini");
+        // End:0x1C5
+        if(bool(m_bUseSystemMsgWnd))
+        {
+            m_hSystemMsgWnd.ShowWindow();            
+        }
+        else
+        {
+            m_hSystemMsgWnd.HideWindow();
+        }        
+    }
+    else
+    {
+        m_hSystemMsgWnd.HideWindow();
+    }
+    ParamAdd(isShowSystemMsgWndParam, "visible", string(m_bUseSystemMsgWnd));
+    // End:0x269
+    if(GetINIBool("global", "UseWorldChatSpeaker", tempVal, "chatfilter.ini"))
+    {
+        CallGFxFunction("worldChatBox", "IsShowSystemMsgWnd", isShowSystemMsgWndParam);
+    }
+    CallGFxFunction("UserAlertMessage", "IsShowSystemMsgWnd", isShowSystemMsgWndParam);
+    // End:0x2F7
+    if(GetINIBool("global", "ChatResizing", tempVal, "chatfilter.ini"))
+    {
+        m_ChatResizeOnOff = tempVal;
+        // End:0x2ED
+        if(bool(m_ChatResizeOnOff))
+        {
+            EnableChatWndResizing(false);            
+        }
+        else
+        {
+            EnableChatWndResizing(true);
+        }        
+    }
+    else
+    {
+        EnableChatWndResizing(true);
+    }
+    _SetAllcurrentAssignedChatTypeID();
+    GetINIInt("global", "ChatFontSizeSaved", FontSize, "chatfilter.ini");
+    _SetChangeFont(FontSize);
+    GetCurrentResolution(CurrentMaxWidth, CurrentMaxHeight);
+    isSavedChatSize = GetINIInt("global", "ChatSizeWidth", sizeW, "chatfilter.ini");
+    isSavedChatSize = GetINIInt("global", "ChatSizeHeight", sizeH, "chatfilter.ini") && isSavedChatSize;
+    // End:0x3ED
+    if(sizeW < 399)
+    {
+        sizeW = 399;
+    }
+    // End:0x401
+    if(sizeH < 130)
+    {
+        sizeH = 130;
+    }
+    // End:0x4F5
+    if((isSavedChatSize && sizeW <= CurrentMaxWidth) && sizeH <= (CurrentMaxHeight - 15))
+    {
+        m_hChatWnd.SetWindowSize(sizeW, sizeH);
+        ChatEditBox.SetWindowSize(sizeW - 52, m_EditBoxHeight);
+        ParamAdd(sizeParam, "w", string(sizeW));
+        ParamAdd(sizeParam, "h", string(sizeH + 35));
+        CallGFxFunction("UserAlertMessage", "ReceiveChatWndSize", sizeParam);
+        CallGFxFunction("worldChatBox", "ReceiveChatWndSize", sizeParam);        
+    }
+    else
+    {
+        m_hChatWnd.SetWindowSize(399, 130);
+        m_hChatWnd.SetResizeFrameOffset(399, 130);
+        SetINIInt("global", "ChatSizeWidth", 399, "chatfilter.ini");
+        SetINIInt("global", "ChatSizeHeight", 130, "chatfilter.ini");
+        ParamAdd(sizeParam, "w", string(399));
+        ParamAdd(sizeParam, "h", string(130 + 35));
+        CallGFxFunction("UserAlertMessage", "ReceiveChatWndSize", sizeParam);
+        CallGFxFunction("worldChatBox", "ReceiveChatWndSize", sizeParam);
+    }
+    m_hChatWnd.SetResizeFrameOffset(399, 130);
+    setInit();
+    HandleOptionHasAppled();
+    InitScrollBarPosition();
+    return;
+}
+/ Для восстанования работы самого окна (над окном чата) - требуется исходникк интерфейса, в нем 4 условия, которые проверят клиент на "GetIsLiveServer" каким-то таким образом:
+C-подобный:
+    // End:0x1D7
+    if(getInstanceUIData().GetIsLiveServer())
+    {
+        GetINIBool("global", "SystemMsgWnd", m_bUseSystemMsgWnd, "chatfilter.ini");
+        // End:0x1C5
+        if(bool(m_bUseSystemMsgWnd))
+        {
+            m_hSystemMsgWnd.ShowWindow();         
+        }
+        else
+        {
+            m_hSystemMsgWnd.HideWindow();
+        }     
+    }
+    else
+    {
+        m_hSystemMsgWnd.HideWindow();
+    }
+// Для восстанования работы самого окна (над окном чата) - требуется исходникк интерфейса, в нем 4 условия, которые проверят клиент на "GetIsLiveServer" каким-то таким образом:
+Еще в ChatWnd.uc есть маленькая проверка, которая может обернуться "почему в окне не отображается дроп".
+C-подобный:
+function bool CheckFilter(SayPacketType SayType, int windowType, ESystemMsgType systemType)
+...
+            if( !getInstanceUIData().getIsClassicServer())
+            {
+                if(systemType == SYSTEM_GETITEMS)
+                {
+                    return true;
+                }
+                if(systemType == SYSTEM_DICE)
+                {
+                    return bool(m_bDiceOption);
+                }
+            }
+
+я хочу сделать HEX ПАТЧ 
+что бы:
+длинна не увеличилась
